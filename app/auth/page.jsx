@@ -4,6 +4,7 @@ import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 
 export default function AuthPage() {
@@ -11,6 +12,7 @@ export default function AuthPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [userType, setUserType] = useState("student");
+  const router = useRouter();
 
   const toggleAuthMode = () => {
     setIsLogin(!isLogin);
@@ -202,22 +204,20 @@ export default function AuthPage() {
                   <button
                     type="button"
                     onClick={() => setUserType("student")}
-                    className={`px-4 py-3 rounded-lg border ${
-                      userType === "student"
-                        ? "bg-indigo-50 border-indigo-500 text-indigo-700"
-                        : "border-gray-300 text-gray-700"
-                    } hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500`}
+                    className={`px-4 py-3 rounded-lg border ${userType === "student"
+                      ? "bg-indigo-50 border-indigo-500 text-indigo-700"
+                      : "border-gray-300 text-gray-700"
+                      } hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500`}
                   >
                     Student
                   </button>
                   <button
                     type="button"
                     onClick={() => setUserType("teacher")}
-                    className={`px-4 py-3 rounded-lg border ${
-                      userType === "teacher"
-                        ? "bg-indigo-50 border-indigo-500 text-indigo-700"
-                        : "border-gray-300 text-gray-700"
-                    } hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500`}
+                    className={`px-4 py-3 rounded-lg border ${userType === "teacher"
+                      ? "bg-indigo-50 border-indigo-500 text-indigo-700"
+                      : "border-gray-300 text-gray-700"
+                      } hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500`}
                   >
                     Teacher
                   </button>
@@ -313,8 +313,11 @@ export default function AuthPage() {
               <button
                 type="button"
                 onClick={() =>
-                  (window.location.href =
-                    "http://localhost:5000/api/social-auth/google")
+                (window.location.href =
+                  "http://localhost:5000/api/social-auth/google")
+                  // {
+                  //   router.push("dashboard")
+                  // }
                 }
                 className="w-full inline-flex justify-center py-3 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >

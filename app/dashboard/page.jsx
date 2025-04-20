@@ -4,15 +4,15 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-// import {
-//   ChartBarIcon,
-//   BookOpenIcon,
-//   AcademicCapIcon,
-//   ClockIcon,
-//   TrophyIcon,
-//   ArrowTrendingUpIcon,
-//   FireIcon,
-// } from "@heroicons/react/24/outline";
+import {
+  ChartBarIcon,
+  BookOpenIcon,
+  AcademicCapIcon,
+  ClockIcon,
+  TrophyIcon,
+  ArrowTrendingUpIcon,
+  FireIcon,
+} from "@heroicons/react/24/outline";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -32,25 +32,25 @@ export default function Dashboard() {
       try {
         setLoading(true);
 
-        // // Fetch user data
-        // const userResponse = await fetch("/api/users/profile");
-        // const userData = await userResponse.json();
-        // setUser(userData);
+        // Fetch user data
+        const userResponse = await fetch("/api/users/profile");
+        const userData = await userResponse.json();
+        setUser(userData);
 
-        // // Fetch subjects
-        // const subjectsResponse = await fetch("/api/subjects");
-        // const subjectsData = await subjectsResponse.json();
-        // setSubjects(subjectsData);
+        // Fetch subjects
+        const subjectsResponse = await fetch("/api/subjects");
+        const subjectsData = await subjectsResponse.json();
+        setSubjects(subjectsData);
 
-        // // Fetch recent activity
-        // const activityResponse = await fetch("/api/users/activity");
-        // const activityData = await activityResponse.json();
-        // setRecentActivity(activityData);
+        // Fetch recent activity
+        const activityResponse = await fetch("/api/users/activity");
+        const activityData = await activityResponse.json();
+        setRecentActivity(activityData);
 
-        // // Fetch user stats
-        // const statsResponse = await fetch("/api/users/stats");
-        // const statsData = await statsResponse.json();
-        // setStats(statsData);
+        // Fetch user stats
+        const statsResponse = await fetch("/api/users/stats");
+        const statsData = await statsResponse.json();
+        setStats(statsData);
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
       } finally {
@@ -326,13 +326,12 @@ export default function Dashboard() {
                   {recentActivity.slice(0, 5).map((activity, index) => (
                     <li key={index} className="flex space-x-3">
                       <div
-                        className={`flex-shrink-0 h-8 w-8 rounded-full ${
-                          activity.type === "quiz"
-                            ? "bg-green-100"
-                            : activity.type === "note"
+                        className={`flex-shrink-0 h-8 w-8 rounded-full ${activity.type === "quiz"
+                          ? "bg-green-100"
+                          : activity.type === "note"
                             ? "bg-blue-100"
                             : "bg-yellow-100"
-                        } flex items-center justify-center`}
+                          } flex items-center justify-center`}
                       >
                         {activity.type === "quiz" ? (
                           <ChartBarIcon className="h-4 w-4 text-green-600" />
@@ -423,7 +422,10 @@ export default function Dashboard() {
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <button
-              onClick={() => router.push("/practice")}
+              onClick={
+                // () => router.push("/practice")
+                () => router.push("/upload")
+              }
               className="relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-6 text-center hover:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               <ChartBarIcon className="mx-auto h-8 w-8 text-gray-400" />
@@ -432,7 +434,10 @@ export default function Dashboard() {
               </span>
             </button>
             <button
-              onClick={() => router.push("/flashcards")}
+              onClick={
+                // () => router.push("/flashcards")
+                () => router.push("/upload")
+              }
               className="relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-6 text-center hover:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               <BookOpenIcon className="mx-auto h-8 w-8 text-gray-400" />
@@ -441,7 +446,11 @@ export default function Dashboard() {
               </span>
             </button>
             <button
-              onClick={() => router.push("/notes")}
+              onClick={
+                // () => router.push("/notes")
+                () => router.push("/upload")
+
+              }
               className="relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-6 text-center hover:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
               <AcademicCapIcon className="mx-auto h-8 w-8 text-gray-400" />
@@ -450,7 +459,10 @@ export default function Dashboard() {
               </span>
             </button>
             <button
-              onClick={() => router.push("/leaderboard")}
+              onClick={
+                // () => router.push("/leaderboard")
+                () => router.push("/upload")
+              }
               className="relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-6"
             >
               {" "}

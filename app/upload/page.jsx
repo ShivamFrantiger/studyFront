@@ -2,9 +2,10 @@
 
 import { useState, useRef, useCallback } from 'react';
 import Head from 'next/head';
-import { Upload, X, FileText, Check, AlertCircle, Loader, ChevronDown, ChevronUp, Download } from 'lucide-react';
-
+import { useRouter } from 'next/navigation';
+import { Upload, X, FileText, Check, AlertCircle, Loader, ChevronDown, ChevronUp, Download, Route } from 'lucide-react';
 export default function MaterialUploadPage() {
+    const router = useRouter();
     const [files, setFiles] = useState([]);
     const [isDragging, setIsDragging] = useState(false);
     const [isUploading, setIsUploading] = useState(false);
@@ -422,15 +423,16 @@ export default function MaterialUploadPage() {
                                                 <button
                                                     type="button"
                                                     className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors"
+                                                    onClick={() => router.push("/practiceQuestion")}
                                                 >
                                                     Generate Practice Questions
                                                 </button>
-                                                <button
+                                                {/* <button
                                                     type="button"
                                                     className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors"
                                                 >
                                                     Create Study Plan
-                                                </button>
+                                                </button> */}
                                             </div>
                                         </div>
                                     </div>
